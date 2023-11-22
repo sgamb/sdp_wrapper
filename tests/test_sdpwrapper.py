@@ -8,5 +8,5 @@ def test_request_info():
     response = request_instance.info()
 
     assert isinstance(response, dict)
-    assert response['id'] == 1696, "The ID should be in the response"
+    assert response['id'] == 1696, "The ID should be in the response_test"
     assert response['subject'] == 'Разработка пайтон обертки для sdp/sc api'
