@@ -1,16 +1,14 @@
 from sdpwrapper import Request
-from sdpwrapper import config
+from config import config
 
 
-def test_request_info():
+def test_request_get():
     """Tests an API call to get something"""
 
-    request_instance = Request(1696)
-    response = request_instance.info()
+    request = Request.get(1696)
 
-    assert isinstance(response, dict)
-    assert response['id'] == 1696, "The ID should be in the response_test"
-    assert response['subject'] == 'Разработка пайтон обертки для sdp/sc api'
+    assert request.id == 1696, "The ID should be in the response_test"
+    assert request.subject == 'Разработка пайтон обертки для sdp/sc api'
 
 
 def test_config():

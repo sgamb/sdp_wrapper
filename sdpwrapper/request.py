@@ -1,7 +1,21 @@
-class Request():
-    def __init__(self, id):
-        self.id = id
-        self.subject = 'Разработка пайтон обертки для sdp/sc api'
+from pydantic import BaseModel
+import requests
 
-    def info(self):
-        return {'id': self.id, 'subject': self.subject}
+from config import config
+
+
+def view_request(request_id: int ):
+    url = config.get('URL') + f"/requests/{request_id}"
+    response = requests.get(url, headers=config.get('HEADERS'))
+    return response.json().get('request')
+
+
+class SDPRequest(BaseModel):
+    id: int
+    subject: str
+
+
+class Request():
+    @staticmethod
+    def get(id):
+        return SDPRequest(**view_request(id))
