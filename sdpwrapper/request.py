@@ -4,7 +4,7 @@ import requests
 from config import config
 
 
-def view_request(request_id: int ):
+def view_request(request_id: int):
     url = config.get('URL') + f"/requests/{request_id}"
     response = requests.get(url, headers=config.get('HEADERS'))
     return response.json().get('request')

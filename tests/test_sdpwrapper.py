@@ -1,4 +1,5 @@
 from sdpwrapper import Request
+from sdpwrapper import Task
 from config import config
 
 
@@ -9,6 +10,14 @@ def test_request_get():
 
     assert request.id == 1696, "The ID should be in the response_test"
     assert request.subject == 'Разработка пайтон обертки для sdp/sc api'
+
+
+def test_task_get():
+    """You need to implement get method on Task class"""
+
+    task = Task.get(70)
+
+    assert task.title == 'test task'
 
 
 def test_config():
